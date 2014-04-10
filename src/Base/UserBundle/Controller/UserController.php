@@ -66,15 +66,31 @@ class UserController extends Controller
         $column->setTitle($this->get('translator')->trans('form.email', array(), 'FOSUserBundle'));
 
         $column = $grid->getColumn('roles');
+        $column->setFilterType('select');
         $column->setOperators(array('like'));
         $column->setOperatorsVisible(false);
         $column->setDefaultOperator('like');
+        $column->setSelectFrom('values');
         $column->setTitle($this->get('translator')->trans('form.role', array(), 'FOSUserBundle'));
-        $column->setValues(array('ROLE_ADMIN' => $this->get('translator')->trans('admin.role_admin', array(), 'FOSUserBundle'), 'ROLE_USER' => $this->get('translator')->trans('admin.role_user', array(), 'FOSUserBundle')));
+        $column->setSize(200);
+        $column->setValues(
+            array(
+                'ROLE_ADMIN' => $this->get('translator')->trans('admin.role_admin', array(), 'FOSUserBundle'),
+//                'ROLE_USER' => $this->get('translator')->trans('admin.role_user', array(), 'FOSUserBundle'),
+            )
+        );
 
         $column = $grid->getColumn('locked');
+        $column->setFilterType('select');
+        $column->setSelectFrom('values');
         $column->setTitle($this->get('translator')->trans('form.locked', array(), 'FOSUserBundle'));
-        $column->setValues(array('true' => $this->get('translator')->trans('admin.positive', array(), 'FOSUserBundle'), 'false' => $this->get('translator')->trans('admin.negative', array(), 'FOSUserBundle')));
+        $column->setSize(110);
+        $column->setValues(
+            array(
+                true => $this->get('translator')->trans('positive', array(), 'general'),
+                false => $this->get('translator')->trans('negative', array(), 'general'),
+            )
+        );
 
         //add actions column
         $rowAction = new RowAction($this->get('translator')->trans('Edit'), 'user_edit');

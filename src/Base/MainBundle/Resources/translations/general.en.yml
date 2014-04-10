@@ -4,3 +4,5 @@ en_US: English
 en: English
 cron: Cron
 pages: Pages
+positive: True
+negative: False

@@ -237,7 +237,7 @@
 {% endblock grid_column_massaction_cell %}
 {# ------------------------------------------------ grid_column_boolean_cell --------------------------------------------- #}
 {% block grid_column_boolean_cell %}
-    <span class="{% if value == 1 %}grid_boolean_true{% else %}grid_boolean_false{% endif %}" title="{{ value }}">{{ block('grid_column_cell') }}</span>
+    <span class="{% if value == 'positive' | trans({}, "general") %}grid_boolean_true{% else %}grid_boolean_false{% endif %}" title="{{ value }}">{{ block('grid_column_cell') }}</span>
 {% endblock grid_column_boolean_cell %}
 {# ------------------------------------------------ grid_array_columns --------------------------------------------- #}
 {% block grid_column_array_cell %}
