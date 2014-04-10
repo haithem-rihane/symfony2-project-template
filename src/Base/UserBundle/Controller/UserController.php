@@ -93,8 +93,9 @@ class UserController extends Controller
 
         //add actions column
         $rowAction = new RowAction($this->get('translator')->trans('Edit'), 'user_edit');
-        $actionsColumn2 = new ActionsColumn('info_column', $this->get('translator')->trans('Actions'), array($rowAction), "<br/>");
-        $grid->addColumn($actionsColumn2);
+        $actionsColumn = new ActionsColumn('info_column', $this->get('translator')->trans('Actions'), array($rowAction), "<br/>");
+        $actionsColumn->setSize(110);
+        $grid->addColumn($actionsColumn);
 
         return $grid->getGridResponse('BaseUserBundle::User\index.html.twig');
     }
