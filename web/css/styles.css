@@ -66,10 +66,12 @@ html {
 }
 #footer {
     margin-top: 15px;
-    background-color: #f5f5f5;
+    background-color: #222222;
+    background-image: linear-gradient(to bottom, #3C3C3C 0%, #222222 100%);
+    background-repeat: repeat-x;
 }
 #wrap > .container {
-    padding-top: 70px;
+    padding-top: 50px;
 }
 .container-footer {
     padding: 0 15px;
