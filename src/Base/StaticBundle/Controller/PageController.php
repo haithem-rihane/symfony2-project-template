@@ -57,7 +57,6 @@ class PageController extends Controller
         );
 
         $grid->setSource($source);
-        $grid->setLimits(25);
         $grid->setNoResultMessage($this->get('translator')->trans('No data'));
 
         //custom colums config
