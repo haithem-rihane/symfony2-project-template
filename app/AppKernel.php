@@ -21,11 +21,15 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new BCC\CronManagerBundle\BCCCronManagerBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new APY\DataGridBundle\APYDataGridBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
             new Base\MainBundle\BaseMainBundle(),
             new Base\UserBundle\BaseUserBundle(),
             new Base\LogBundle\BaseLogBundle(),
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Base\StaticBundle\BaseStaticBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

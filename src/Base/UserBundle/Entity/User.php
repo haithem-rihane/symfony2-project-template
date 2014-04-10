@@ -5,12 +5,15 @@ namespace Base\UserBundle\Entity;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use APY\DataGridBundle\Grid\Mapping as GRID;
 
 /**
  * User
  *
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Base\UserBundle\Entity\UserRepository")
+ * @Gedmo\Loggable(logEntryClass="Base\LogBundle\Entity\EntityLog")
+ * @GRID\Source(columns="id, name, surname, email, username, roles, locked")
  */
 class User extends BaseUser
 {
@@ -25,21 +28,21 @@ class User extends BaseUser
 
     /**
      * @var \DateTime
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="registeredAt", type="datetime")
      */
     protected $registeredAt;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     protected $name = null;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="surname", type="string", length=255, nullable=true)
      */
     protected $surname = null;
@@ -169,5 +172,10 @@ class User extends BaseUser
         }
 
         return $this;
+    }
+
+    public function getPublicName(){
+        if ($this->getNameSurname()) return $this->getNameSurname();
+            else return $this->getUsername();
     }
 }

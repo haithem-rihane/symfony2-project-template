@@ -1,0 +1,18 @@
+form:
+  create: Create
+  edit: Update
+  title: Title
+  group: Group
+  text: Text
+  create_page: Create page
+  edit_page: Edit page
+  pages: Pages
+  created: Page created
+  updated: Page updated
+  delete: Delete
+  deleted: Paged deleted
+  position: Position
+  lt_LT: Lietuvių
+  en_US: English
+  help: Help
+  language: Language

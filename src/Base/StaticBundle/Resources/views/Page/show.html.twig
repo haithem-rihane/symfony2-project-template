@@ -1,0 +1,9 @@
+{% extends 'BaseMainBundle::layout.html.twig' %}
+
+{% block body -%}
+    <h1>{{ entity.title }}</h1>
+
+    {% if entity.text %}
+        {{ entity.text|raw }}
+    {% endif %}
+{% endblock %}

@@ -15,6 +15,14 @@ BCCCronManagerBundle:
     resource: "@BCCCronManagerBundle/Resources/config/routing.xml"
     prefix:   /cron
 
-base_user:
+base_user_fos:
     resource: "@BaseUserBundle/Resources/config/routing.yml"
     prefix: /
+
+base_static:
+    resource: "@BaseStaticBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+_bazinga_jstranslation:
+    resource: "@BazingaJsTranslationBundle/Resources/config/routing/routing.yml"

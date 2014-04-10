@@ -1,0 +1,18 @@
+form:
+  create: Sukurti
+  edit: Atnaujinti
+  title: Pavadinimas
+  group: Grupė
+  text: Tekstas
+  create_page: Sukurti puslapį
+  edit_page: Redaguoti puslapį
+  pages: Puslapiai
+  created: Puslapis sukurtas
+  updated: Puslapis atnaujintas
+  delete: Ištrinti
+  deleted: Puslapis ištrintas
+  position: Pozicija
+  lt_LT: Lietuvių
+  en_US: English
+  help: Pagalba
+  language: Kalba

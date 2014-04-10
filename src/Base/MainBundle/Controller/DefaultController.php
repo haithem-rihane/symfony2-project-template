@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -23,12 +24,11 @@ class DefaultController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function localeLtAction()
+    public function localeLtAction(Request $request)
     {
-        $this->getRequest()->getSession()->set('_locale', 'lt_LT');
-        $request = $this->getRequest();
+        $request->getSession()->set('_locale', 'lt');
         $locale = $request->getLocale();
-        $request->setLocale('lt_LT');
+        $request->setLocale('lt');
         return $this->redirect($this->get('request')->headers->get('referer'));
     }
 
@@ -37,11 +37,10 @@ class DefaultController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function localeEnAction(){
-        $this->getRequest()->getSession()->set('_locale', 'en_US');
-        $request = $this->getRequest();
+    public function localeEnAction(Request $request){
+        $request->getSession()->set('_locale', 'en');
         $locale = $request->getLocale();
-        $request->setLocale('en_US');
+        $request->setLocale('en');
         return $this->redirect($this->get('request')->headers->get('referer'));
     }
 }
