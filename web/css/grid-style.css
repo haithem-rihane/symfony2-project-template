@@ -11,12 +11,12 @@
     padding-top: 4px;
 }
 
-.grid th div.sort_up {
-    background: transparent url("data:image/gif;base64,R0lGODlhFwAKAIABAJCQkO/v7yH+EUNyZWF0ZWQgd2l0aCBHSU1QACH5BAEKAAEALAAAAAAXAAoAAAIajI+py+0GwGsxTmVDvlqe/YCQ52wmyaXqUQAAOw==") no-repeat bottom left;
+.grid th span.sort_up {
+    margin-right: 5px;
 }
 
-.grid th div.sort_down {
-    background: transparent url("data:image/gif;base64,R0lGODlhFwAKAHAAACH5BAEAAAIALAAAAAAXAAoAgQAAAJCQkAAAAAAAAAIalI+py60RDpTRiZmwvdXozXkdKH6keKZqUwAAOw==") no-repeat bottom left;
+.grid th span.sort_down {
+    margin-right: 5px;
 }
 
 /* Boolean column */
@@ -56,8 +56,9 @@
 }
 
 .grid .grid-filter-input-query input, .grid .grid-filter-select-query select{
-    width: auto;
+    width: 90% !important;
 }
+
 
 .grid .grid-filter-input-query-to, .grid .grid-filter-select-query-to{
     margin-left: 77px;
