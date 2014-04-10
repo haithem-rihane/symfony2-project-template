@@ -109,6 +109,7 @@ fos_user:
 twig:
     globals:
         project: "%project%"
+        project_full_host: "%project_full_host%"
 
 apy_data_grid:
     pagerfanta:
