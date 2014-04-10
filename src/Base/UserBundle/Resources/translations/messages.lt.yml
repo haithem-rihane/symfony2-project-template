@@ -5,3 +5,37 @@ Reset: Atstatyti filtrą
 Populate: Apgyvendinti
 Execute: Vykdyti
 Show: Rodyti
+
+# Group
+group:
+    flash:
+        updated: Grupė buvo atnaujinta
+        created: Grupė buvo sukurta
+        deleted: Grupė buvo ištrinta
+
+# Security
+"Bad credentials": Neteisingas naudotojas arba slaptažodis
+
+# Profile
+profile:
+    flash:
+        updated: Profilis buvo atnaujintas
+
+# Password change
+change_password:
+    flash:
+        success: Slaptažodis buvo pakeistas
+
+# Registration
+registration:
+    check_email: Buvo išsiūstas el. paštas adresu %email%. Jame rasite nuorodą kurią aplankę aktyvuosite savo paskyrą.
+    confirmed: Sveikiname %username%, jusu paskyra buvo aktyvuota.
+    flash:
+        user_created: Naudotojas buvo sukurtas sėkmingai
+
+# Password resetting
+resetting:
+    password_already_requested: Slaptažodis šitam naudotojui jau buvo prašytas pakeisti per pastarąsias 24 valandas.
+    check_email: Buvo išsiūstas el. paštas adresu %email%. Jame rasite nuorodą kurią paspaudus galėsite pakeisti savo slaptažodi.
+    flash:
+        success: Slaptažodis pakeistas sėkmingai

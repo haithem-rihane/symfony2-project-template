@@ -1,7 +1,7 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block body -%}
-    {% include "BaseUserBundle::messages.html.twig" %}
+    {% include "::messages.html.twig" %}
 
     <form class="form-signin fos_user_profile_edit" role="form" action="{{ path('user_update', { 'id': entity.id }) }}" {{ form_enctype(edit_form) }} method="POST">
         <h1>{{ 'admin.edit_user'|trans({}, 'FOSUserBundle') }}</h1>

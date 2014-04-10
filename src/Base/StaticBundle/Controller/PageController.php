@@ -110,7 +110,7 @@ class PageController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            $this->get('session')->getFlashBag()->add('notice', 'form.created');
+            $this->get('session')->getFlashBag()->add('notice', 'messages.created');
 
             return $this->redirect($this->generateUrl('page'));
         }
@@ -251,7 +251,7 @@ class PageController extends Controller
 
             $em->flush();
 
-            $this->get('session')->getFlashBag()->add('notice', 'form.updated');
+            $this->get('session')->getFlashBag()->add('notice', 'messages.updated');
 
             return $this->redirect($this->generateUrl('page_edit', array('id' => $id)));
         }
@@ -284,7 +284,7 @@ class PageController extends Controller
             $em->remove($entity);
             $em->flush();
 
-            $this->get('session')->getFlashBag()->add('notice', 'form.deleted');
+            $this->get('session')->getFlashBag()->add('notice', 'messages.deleted');
         }
 
         return $this->redirect($this->generateUrl('page'));

@@ -1,7 +1,7 @@
 {% extends 'BaseMainBundle::layout.html.twig' %}
 
 {% block body -%}
-    {% include "BaseStaticBundle::messages.html.twig" %}
+    {% include "::messages.html.twig" %}
 
     <h1>{{ 'form.pages'|trans({}, 'StaticBundle') }}</h1>
     <a class="btn btn-default" href="{{ path("page_new") }}"><span class="glyphicon glyphicon-plus-sign"></span> {{ "form.create" | trans({}, 'StaticBundle') }}</a>

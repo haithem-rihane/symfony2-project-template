@@ -1,7 +1,7 @@
 {% extends 'BaseMainBundle::layout.html.twig' %}
 
 {% block body -%}
-    {% include "BaseStaticBundle::messages.html.twig" %}
+    {% include "::messages.html.twig" %}
 
     <form class="form-normal" role="form" action="{{ path('page_create') }}" method="post" {{ form_enctype(form) }}>
         <h1>{{ 'form.create_page'|trans({}, 'StaticBundle') }}</h1>

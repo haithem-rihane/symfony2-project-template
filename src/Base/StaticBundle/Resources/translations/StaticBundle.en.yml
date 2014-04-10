@@ -7,10 +7,7 @@ form:
   create_page: Create page
   edit_page: Edit page
   pages: Pages
-  created: Page created
-  updated: Page updated
   delete: Delete
-  deleted: Paged deleted
   position: Position
   lt_LT: Lietuvių
   en_US: English

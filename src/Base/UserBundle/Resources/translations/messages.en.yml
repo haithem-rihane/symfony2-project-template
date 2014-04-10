@@ -5,3 +5,37 @@ Reset: Reset filter
 Populate: Populate
 Execute: Execute
 Show: Show
+
+# Group
+group:
+    flash:
+        updated: The group has been updated
+        created: The group has been created
+        deleted: The group has been deleted
+
+# Security
+"Bad credentials": Invalid username or password
+
+# Profile
+profile:
+    flash:
+        updated: The profile has been updated
+
+# Password change
+change_password:
+    flash:
+        success: The password has been changed
+
+# Registration
+registration:
+    check_email: An email has been sent to %email%. It contains an activation link you must click to activate your account.
+    confirmed: Congrats %username%, your account is now activated.
+    flash:
+        user_created: The user has been created successfully
+
+# Password resetting
+resetting:
+    password_already_requested: The password for this user has already been requested within the last 24 hours.
+    check_email: An email has been sent to %email%. It contains a link you must click to reset your password.
+    flash:
+        success: The password has been reset successfully
