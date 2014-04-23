@@ -129,6 +129,10 @@ knp_paginator:
     template:
         pagination: BaseStaticBundle:General:paginator.html.twig
 
+sensio_framework_extra:
+    view:
+        annotations: false
+
 nelmio_api_doc:
     sandbox:
         enabled:  false
