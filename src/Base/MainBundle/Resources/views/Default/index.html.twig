@@ -1,4 +1,5 @@
 {% extends 'BaseMainBundle::layout.html.twig' %}
 
 {% block body %}
+    {{ render(controller('BaseStaticBundle:Page:staticInfo', {groupName : 'front_page'})) }}
 {% endblock %}

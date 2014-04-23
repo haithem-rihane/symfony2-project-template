@@ -19,7 +19,7 @@ use APY\DataGridBundle\Grid\Column\ActionsColumn;
 class PageController extends Controller
 {
     /**
-     * Show for static menu
+     * Show for static menu group
      *
      */
     public function staticMenuAction($groupName, Request $request)
@@ -29,6 +29,20 @@ class PageController extends Controller
         $entities = $em->getRepository('BaseStaticBundle:Page')->findBy(array('groupName' => $groupName, 'language' => $request->getLocale() ), array('position' => 'ASC'));;
 
         return $this->container->get('templating')->renderResponse("BaseStaticBundle::staticMenu.html.twig", array(
+            'pages' => $entities,
+        ));
+    }
+
+    /**
+     * Show for static info block group
+     */
+    public function staticInfoAction($groupName, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('BaseStaticBundle:Page')->findBy(array('groupName' => $groupName, 'language' => $request->getLocale() ), array('position' => 'ASC'));;
+
+        return $this->container->get('templating')->renderResponse("BaseStaticBundle::staticInfo.html.twig", array(
             'pages' => $entities,
         ));
     }
@@ -76,6 +90,12 @@ class PageController extends Controller
         $column->setDefaultOperator('like');
         $column->setSortable(false);
         $column->setTitle($this->get('translator')->trans('form.group', array(), 'StaticBundle'));
+        $column->setValues(
+            array(
+                'help' => $this->get('translator')->trans('form.help', array(), 'StaticBundle'),
+                'front_page' => $this->get('translator')->trans('form.front_page', array(), 'StaticBundle'),
+            )
+        );
 
         //add actions column
         $rowAction = new RowAction($this->get('translator')->trans('Edit'), 'page_edit');
