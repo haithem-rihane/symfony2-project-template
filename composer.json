@@ -23,7 +23,7 @@
         "stof/doctrine-extensions-bundle": "@stable",
         "knplabs/knp-menu": "2.0.*@dev",
         "knplabs/knp-paginator-bundle": "~2.4",
-        "jms/serializer-bundle": "dev-master",
+        "jms/serializer-bundle": "@stable",
         "friendsofsymfony/user-bundle": "@stable",
         "leafo/lessphp": "dev-master",
         "bcc/cron-manager-bundle": "v2.4.0",
@@ -31,7 +31,9 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "pagerfanta/pagerfanta": "dev-master",
         "apy/datagrid-bundle": "dev-master",
-        "willdurand/js-translation-bundle": "@stable"
+        "willdurand/js-translation-bundle": "@stable",
+        "friendsofsymfony/rest-bundle": "@stable",
+        "nelmio/api-doc-bundle": "@stable"
     },
     "scripts": {
         "post-install-cmd": [

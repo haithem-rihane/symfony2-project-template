@@ -30,6 +30,9 @@ class AppKernel extends Kernel
             new Base\UserBundle\BaseUserBundle(),
             new Base\LogBundle\BaseLogBundle(),
             new Base\StaticBundle\BaseStaticBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
