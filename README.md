@@ -30,3 +30,9 @@ Includes Symfony 2 REST related bundles:
 - FOSRestBundle
 - JMSSerializerBundle
 - NelmioApiDocBundle
+
+Other important changes
+===
+- profiler has been disabled
+- emails on dev environment will be spooled to disk
+- console, app.php, app_dev.php have enabled umask(0000) for simplified permissions workaround
