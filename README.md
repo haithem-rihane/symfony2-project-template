@@ -1,7 +1,7 @@
 sfbase
 =====
 
-Symfony 2.4 based template project
+Ready to use Symfony 2.4 based template project, with latest common pre-configured bundles
 
 Includes css/js libraries:
 - jQuery v1.11.0
