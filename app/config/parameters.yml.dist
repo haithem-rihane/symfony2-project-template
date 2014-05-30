@@ -11,8 +11,8 @@ parameters:
     mailer_user: null
     mailer_password: null
     locale: lt_LT
-    secret: f781fb4417d6d72748d4747219dca7ca
+    secret: CREATE_SOME_SECRET_STRING
     project: SOMETHING
-    project_domain: .something
+    project_domain: .something.com
     project_email: info@something.com
     project_full_host: http://www.something.com
