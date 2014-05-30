@@ -42,8 +42,8 @@
 <li class="dropdown">
     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-flag"></span> {{ app.request.locale|trans({}, 'general') }} <b class="caret"></b></a>
     <ul class="dropdown-menu">
-        <li><a href="{{ path('change_locale_lt') }}">{% if app.request.locale == 'lt' %}<span class="glyphicon glyphicon-check"></span>{% else %}<span class="glyphicon glyphicon-unchecked"></span>{% endif %} {{ 'lt'|trans({}, 'general') }}</a></li>
-        <li><a href="{{ path('change_locale_en') }}">{% if app.request.locale == 'en' %}<span class="glyphicon glyphicon-check"></span>{% else %}<span class="glyphicon glyphicon-unchecked"></span>{% endif %} {{ 'en'|trans({}, 'general') }}</a></li>
+        <li><a href="{{ path('change_locale', {locale: 'lt'}) }}">{% if app.request.locale == 'lt' %}<span class="glyphicon glyphicon-check"></span>{% else %}<span class="glyphicon glyphicon-unchecked"></span>{% endif %} {{ 'lt'|trans({}, 'general') }}</a></li>
+        <li><a href="{{ path('change_locale', {locale: 'en'}) }}">{% if app.request.locale == 'en' %}<span class="glyphicon glyphicon-check"></span>{% else %}<span class="glyphicon glyphicon-unchecked"></span>{% endif %} {{ 'en'|trans({}, 'general') }}</a></li>
     </ul>
 </li>
 

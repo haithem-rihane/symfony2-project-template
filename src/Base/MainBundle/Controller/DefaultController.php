@@ -20,27 +20,15 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/lt.html", name="change_locale_lt")
+     * @Route("/lang/{locale}.html", name="change_locale")
      * @Method("GET")
      * @Template()
      */
-    public function localeLtAction(Request $request)
+    public function localeLtAction($locale, Request $request)
     {
-        $request->getSession()->set('_locale', 'lt');
-        $locale = $request->getLocale();
-        $request->setLocale('lt');
+        $request->getSession()->set('_locale', $locale);
+        $request->setLocale($locale);
         return $this->redirect($this->get('request')->headers->get('referer'));
     }
 
-    /**
-     * @Route("/en.html", name="change_locale_en")
-     * @Method("GET")
-     * @Template()
-     */
-    public function localeEnAction(Request $request){
-        $request->getSession()->set('_locale', 'en');
-        $locale = $request->getLocale();
-        $request->setLocale('en');
-        return $this->redirect($this->get('request')->headers->get('referer'));
-    }
 }
