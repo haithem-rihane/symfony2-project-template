@@ -51,7 +51,7 @@ Installation
 
         php composer.phar install
 
-    You will be prompted to enter configuration values in parameters.yml, please refere to [parameters.yml.dist](/app/config/parameters.yml.dist) for more information.
+    You will be prompted to enter configuration values in parameters.yml, please refer to [parameters.yml.dist](/app/config/parameters.yml.dist) for more information.
 
 2. **Create database and schema**
 
@@ -65,4 +65,3 @@ Installation
     To add administrative role to user, execute following command, and enter **ROLE_ADMIN** role when prompted.
 
         php app/console fos:user:promote
-
