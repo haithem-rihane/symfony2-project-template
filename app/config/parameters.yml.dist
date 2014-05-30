@@ -12,7 +12,7 @@ parameters:
     mailer_password: null
     locale: lt
     secret: CREATE_SOME_SECRET_STRING
-    project: SOMETHING
-    project_domain: .something.com
-    project_email: info@something.com
-    project_full_host: http://www.something.com
+    project: SOMETHING #project name, used in titles and etc.
+    project_domain: .something.com #project domain, used when authenticating in cookies, must match your host for authentication to work.
+    project_email: info@something.com #main administrative email
+    project_full_host: http://www.something.com #full host name, used in generating some of url's
