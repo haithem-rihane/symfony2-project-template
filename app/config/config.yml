@@ -138,6 +138,8 @@ nelmio_api_doc:
         enabled:  false
 
 fos_rest:
+    serializer:
+        serialize_null: true
     param_fetcher_listener: true
     body_listener: true
     format_listener: true
