@@ -33,6 +33,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
+            new Iphp\FileStoreBundle\IphpFileStoreBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

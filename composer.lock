@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "184a08b6f9da867d060bc3927d09f8a9",
+    "hash": "f926b43c08616ed89ebb8fe8a5152bfe",
     "packages": [
         {
             "name": "apy/datagrid-bundle",
@@ -1287,6 +1287,47 @@
                 "parameters management"
             ],
             "time": "2013-12-07 10:10:39"
+        },
+        {
+            "name": "iphp/filestore-bundle",
+            "version": "v0.1",
+            "target-dir": "Iphp/FileStoreBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vitiko/IphpFileStoreBundle.git",
+                "reference": "7f24c6b9041af829f9af3b5303214eb6ea5ea40b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vitiko/IphpFileStoreBundle/zipball/7f24c6b9041af829f9af3b5303214eb6ea5ea40b",
+                "reference": "7f24c6b9041af829f9af3b5303214eb6ea5ea40b",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/symfony": ">=2.1.0"
+            },
+            "type": "bundle",
+            "autoload": {
+                "psr-0": {
+                    "Iphp\\FileStoreBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vitiko",
+                    "email": "vitiko@mail.ru"
+                }
+            ],
+            "description": "Bundle for upload files in symfony 2.1 project",
+            "homepage": "http://symfonydev.ru",
+            "keywords": [
+                "symfony"
+            ],
+            "time": "2013-03-21 06:11:14"
         },
         {
             "name": "jdorn/sql-formatter",
