@@ -2,7 +2,9 @@
 
 <form class="form-signin fos_user_profile_edit" role="form" action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST">
     <h1>{{ 'profile.title'|trans({}, 'FOSUserBundle') }}</h1>
-    {{ form_widget(form._token) }}
+    {% if form._token is defined%}
+        {{ form_widget(form._token) }}
+    {% endif %}
 
     {{ form_label(form.username) }}
     {{ form_errors(form.username) }}

@@ -7,7 +7,9 @@
         <input type="hidden" name="_method" value="PUT" />
         <h1>{{ 'form.edit_page'|trans({}, 'StaticBundle') }}</h1>
 
-        {{ form_widget(edit_form._token) }}
+        {% if edit_form._token is defined%}
+            {{ form_widget(edit_form._token) }}
+        {% endif %}
 
         {{ form_label(edit_form.title) }}
         {{ form_errors(edit_form.title) }}

@@ -6,7 +6,9 @@
     <form class="form-signin fos_user_profile_edit" role="form" action="{{ path('user_update', { 'id': entity.id }) }}" {{ form_enctype(edit_form) }} method="POST">
         <h1>{{ 'admin.edit_user'|trans({}, 'FOSUserBundle') }}</h1>
         <input type="hidden" name="_method" value="PUT" />
-        {{ form_widget(edit_form._token) }}
+        {% if edit_form._token is defined%}
+            {{ form_widget(edit_form._token) }}
+        {% endif %}
 
         {{ form_errors(edit_form.username) }}
         {{ form_widget(edit_form.username) }}
