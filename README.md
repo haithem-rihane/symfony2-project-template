@@ -1,7 +1,7 @@
 sfbase
 =====
 
-Ready to use Symfony 2.4 based template project, with latest common pre-configured bundles.
+Ready to use Symfony 2.6 based template project, with latest common pre-configured bundles.
 
 Includes css/js libraries:
 

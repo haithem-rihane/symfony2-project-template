@@ -95,6 +95,10 @@ public function getInt($key, $default = 0, $deep = false)
 {
 return (int) $this->get($key, $default, $deep);
 }
+public function getBoolean($key, $default = false, $deep = false)
+{
+return $this->filter($key, $default, $deep, FILTER_VALIDATE_BOOLEAN);
+}
 public function filter($key, $default = null, $deep = false, $filter = FILTER_DEFAULT, $options = array())
 {
 $value = $this->get($key, $default, $deep);
@@ -759,7 +763,12 @@ return 443;
 }
 }
 if ($host = $this->headers->get('HOST')) {
-if (false !== $pos = strrpos($host,':')) {
+if ($host[0] ==='[') {
+$pos = strpos($host,':', strrpos($host,']'));
+} else {
+$pos = strrpos($host,':');
+}
+if (false !== $pos) {
 return intval(substr($host, $pos + 1));
 }
 return'https'=== $this->getScheme() ? 443 : 80;
@@ -768,11 +777,11 @@ return $this->server->get('SERVER_PORT');
 }
 public function getUser()
 {
-return $this->server->get('PHP_AUTH_USER');
+return $this->headers->get('PHP_AUTH_USER');
 }
 public function getPassword()
 {
-return $this->server->get('PHP_AUTH_PW');
+return $this->headers->get('PHP_AUTH_PW');
 }
 public function getUserInfo()
 {
@@ -824,7 +833,8 @@ public function isSecure()
 if (self::$trustedProxies && self::$trustedHeaders[self::HEADER_CLIENT_PROTO] && $proto = $this->headers->get(self::$trustedHeaders[self::HEADER_CLIENT_PROTO])) {
 return in_array(strtolower(current(explode(',', $proto))), array('https','on','ssl','1'));
 }
-return'on'== strtolower($this->server->get('HTTPS')) || 1 == $this->server->get('HTTPS');
+$https = $this->server->get('HTTPS');
+return !empty($https) &&'off'!== strtolower($https);
 }
 public function getHost()
 {
@@ -1372,22 +1382,7 @@ $this->sendContent();
 if (function_exists('fastcgi_finish_request')) {
 fastcgi_finish_request();
 } elseif ('cli'!== PHP_SAPI) {
-$previous = null;
-$obStatus = ob_get_status(1);
-while (($level = ob_get_level()) > 0 && $level !== $previous) {
-$previous = $level;
-if ($obStatus[$level - 1]) {
-if (version_compare(PHP_VERSION,'5.4','>=')) {
-if (isset($obStatus[$level - 1]['flags']) && ($obStatus[$level - 1]['flags'] & PHP_OUTPUT_HANDLER_REMOVABLE)) {
-ob_end_flush();
-}
-} else {
-if (isset($obStatus[$level - 1]['del']) && $obStatus[$level - 1]['del']) {
-ob_end_flush();
-}
-}
-}
-}
+static::closeOutputBuffers(0, true);
 flush();
 }
 return $this;
@@ -1712,6 +1707,25 @@ return in_array($this->statusCode, array(201, 301, 302, 303, 307, 308)) && (null
 public function isEmpty()
 {
 return in_array($this->statusCode, array(204, 304));
+}
+public static function closeOutputBuffers($targetLevel, $flush)
+{
+$status = ob_get_status(true);
+$level = count($status);
+while ($level-- > $targetLevel
+&& (!empty($status[$level]['del'])
+|| (isset($status[$level]['flags'])
+&& ($status[$level]['flags'] & PHP_OUTPUT_HANDLER_REMOVABLE)
+&& ($status[$level]['flags'] & ($flush ? PHP_OUTPUT_HANDLER_FLUSHABLE : PHP_OUTPUT_HANDLER_CLEANABLE))
+)
+)
+) {
+if ($flush) {
+ob_end_flush();
+} else {
+ob_end_clean();
+}
+}
 }
 protected function ensureIEOverSSLCompatibility(Request $request)
 {
@@ -2219,7 +2233,6 @@ use Symfony\Component\Config\Loader\LoaderResolver;
 use Symfony\Component\Config\Loader\DelegatingLoader;
 use Symfony\Component\Config\ConfigCache;
 use Symfony\Component\ClassLoader\ClassCollectionLoader;
-use Symfony\Component\Filesystem\Filesystem;
 abstract class Kernel implements KernelInterface, TerminableInterface
 {
 protected $bundles = array();
@@ -2232,12 +2245,12 @@ protected $booted = false;
 protected $name;
 protected $startTime;
 protected $loadClassCache;
-const VERSION ='2.4.5';
-const VERSION_ID ='20405';
+const VERSION ='2.6.0-DEV';
+const VERSION_ID ='20600';
 const MAJOR_VERSION ='2';
-const MINOR_VERSION ='4';
-const RELEASE_VERSION ='5';
-const EXTRA_VERSION ='';
+const MINOR_VERSION ='6';
+const RELEASE_VERSION ='0';
+const EXTRA_VERSION ='DEV';
 public function __construct($environment, $debug)
 {
 $this->environment = $environment;
@@ -2578,32 +2591,7 @@ $content = $dumper->dump(array('class'=> $class,'base_class'=> $baseClass));
 if (!$this->debug) {
 $content = static::stripComments($content);
 }
-$content = $this->removeAbsolutePathsFromContainer($content);
 $cache->write($content, $container->getResources());
-}
-private function removeAbsolutePathsFromContainer($content)
-{
-if (!class_exists('Symfony\Component\Filesystem\Filesystem')) {
-return $content;
-}
-$rootDir = $this->getRootDir();
-$previous = $rootDir;
-while (!file_exists($rootDir.'/composer.json')) {
-if ($previous === $rootDir = realpath($rootDir.'/..')) {
-return $content;
-}
-$previous = $rootDir;
-}
-$rootDir = rtrim($rootDir,'/');
-$cacheDir = $this->getCacheDir();
-$filesystem = new Filesystem();
-return preg_replace_callback("{'([^']*)(".preg_quote($rootDir)."[^']*)'}", function ($match) use ($filesystem, $cacheDir) {
-$prefix = isset($match[1]) && $match[1] ? "'$match[1]'.__DIR__" :"__DIR__";
-if ('.'=== $relativePath = rtrim($filesystem->makePathRelative($match[2], $cacheDir),'/')) {
-return $prefix;
-}
-return $prefix.".'/".$relativePath."'";
-}, $content);
 }
 protected function getContainerLoader(ContainerInterface $container)
 {
@@ -2838,6 +2826,7 @@ $application->add($r->newInstance());
 namespace Symfony\Component\Config
 {
 use Symfony\Component\Config\Resource\ResourceInterface;
+use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 class ConfigCache
 {
@@ -2875,13 +2864,20 @@ return true;
 }
 public function write($content, array $metadata = null)
 {
-$mode = 0666 & ~umask();
+$mode = 0666;
+$umask = umask();
 $filesystem = new Filesystem();
 $filesystem->dumpFile($this->file, $content, null);
-@chmod($this->file, $mode);
+try {
+$filesystem->chmod($this->file, $mode, $umask);
+} catch (IOException $e) {
+}
 if (null !== $metadata && true === $this->debug) {
 $filesystem->dumpFile($this->getMetaFile(), serialize($metadata), null);
-@chmod($this->getMetaFile(), $mode);
+try {
+$filesystem->chmod($this->getMetaFile(), $mode, $umask);
+} catch (IOException $e) {
+}
 }
 }
 private function getMetaFile()
@@ -2932,6 +2928,16 @@ return $this->handleException($e, $request, $type);
 public function terminate(Request $request, Response $response)
 {
 $this->dispatcher->dispatch(KernelEvents::TERMINATE, new PostResponseEvent($this, $request, $response));
+}
+public function terminateWithException(\Exception $exception)
+{
+if (!$request = $this->requestStack->getMasterRequest()) {
+throw new \LogicException('Request stack is empty', 0, $exception);
+}
+$response = $this->handleException($exception, $request, self::MASTER_REQUEST);
+$response->sendHeaders();
+$response->sendContent();
+$this->terminate($request, $response);
 }
 private function handleRaw(Request $request, $type = self::MASTER_REQUEST)
 {
