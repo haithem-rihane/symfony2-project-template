@@ -125,7 +125,7 @@ knp_paginator:
     default_options:
         page_name: page
     template:
-        pagination: BaseStaticBundle:General:paginator.html.twig
+        pagination: BaseMainBundle:General:paginator.html.twig
 
 sensio_framework_extra:
     view:
