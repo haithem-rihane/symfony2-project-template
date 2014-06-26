@@ -6,7 +6,7 @@
     <form class="form-normal" role="form" action="{{ path('page_create') }}" method="post" {{ form_enctype(form) }}>
         <h1>{{ 'form.create_page'|trans({}, 'StaticBundle') }}</h1>
 
-        {% if form._token is defined%}
+        {% if form._token is defined %}
             {{ form_widget(form._token) }}
         {% endif %}
 
