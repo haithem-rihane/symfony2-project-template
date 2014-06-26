@@ -31,6 +31,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        project: "%project%"
+        project_full_host: "%project_full_host%"
 
 # Assetic Configuration
 assetic:
@@ -105,11 +108,6 @@ fos_user:
     registration:
         form:
             type: base_user_registration
-
-twig:
-    globals:
-        project: "%project%"
-        project_full_host: "%project_full_host%"
 
 apy_data_grid:
     limits: 25
