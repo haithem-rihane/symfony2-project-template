@@ -33,7 +33,9 @@
         "apy/datagrid-bundle": "dev-master",
         "willdurand/js-translation-bundle": "@stable",
         "friendsofsymfony/rest-bundle": "@stable",
-        "nelmio/api-doc-bundle": "@stable"
+        "nelmio/api-doc-bundle": "@stable",
+        "liip/functional-test-bundle": "@stable",
+        "liip/imagine-bundle": "@stable"
     },
     "scripts": {
         "post-install-cmd": [

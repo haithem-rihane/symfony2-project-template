@@ -19,6 +19,8 @@ Includes Symfony 2 general bundles:
 - FOSUserBundle
 - KnpMenuBundle
 - BCCCronManagerBundle
+- LiipImagineBundle
+- LiipFunctionalTestBundle
 
 Includes Symfony 2 data view related bundles:
 
