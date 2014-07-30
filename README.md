@@ -1,7 +1,7 @@
-sfbase
+symfony2 project template
 =====
 
-Ready to use Symfony 2.6 based template project, with latest common pre-configured bundles.
+Ready to use Symfony 2.6 based template project, with latest common pre-configured bundles and jQuery, Bootstrap and other usefull plugins.
 
 Includes css/js libraries:
 
