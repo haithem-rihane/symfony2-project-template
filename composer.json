@@ -3,6 +3,12 @@
     "license": "MIT",
     "type": "project",
     "description": "Ready to use Symfony 2.6 based template project, with latest common pre-configured bundles and jQuery, Bootstrap and other usefull plugins.",
+    "authors": [
+        {
+            "name": "Gediminas Šaltenis",
+            "homepage": "http://gediminas.saltenis.lt"
+        }
+    ],    
     "autoload": {
         "psr-0": { "": "src/" }
     },
