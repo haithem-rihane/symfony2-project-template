@@ -22,6 +22,7 @@ Includes Symfony 2 general bundles:
 - BCCCronManagerBundle
 - LiipImagineBundle
 - LiipFunctionalTestBundle
+- fzaninotto/Faker
 - Iphp\FileStoreBundle
 
 Includes Symfony 2 data view related bundles:

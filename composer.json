@@ -43,7 +43,8 @@
         "nelmio/api-doc-bundle": "@stable",
         "liip/functional-test-bundle": "@stable",
         "liip/imagine-bundle": "@stable",
-        "iphp/filestore-bundle": "~0.1"
+        "iphp/filestore-bundle": "~0.1",
+        "fzaninotto/faker": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
