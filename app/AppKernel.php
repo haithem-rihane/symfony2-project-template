@@ -16,24 +16,34 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+
+            new FOS\UserBundle\FOSUserBundle(),
+
+            // Advancements.
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new BCC\CronManagerBundle\BCCCronManagerBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
+            new Iphp\FileStoreBundle\IphpFileStoreBundle(),
+
+            // Rest related bundles.
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+
+            // Front end views.
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new APY\DataGridBundle\APYDataGridBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
+            // Front end JS related.
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
+
             new Base\MainBundle\BaseMainBundle(),
             new Base\UserBundle\BaseUserBundle(),
             new Base\LogBundle\BaseLogBundle(),
             new Base\StaticBundle\BaseStaticBundle(),
-            new FOS\RestBundle\FOSRestBundle(),
-            new JMS\SerializerBundle\JMSSerializerBundle(),
-            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
-            new Liip\ImagineBundle\LiipImagineBundle(),
-            new Iphp\FileStoreBundle\IphpFileStoreBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
