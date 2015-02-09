@@ -1,23 +1,23 @@
 {
-    "name": "symfony/framework-standard-edition",
+    "name": "trylika/symfony2-project-template",
     "license": "MIT",
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "description": "Ready to use Symfony 2.6 based template project, with latest common pre-configured bundles and jQuery, Bootstrap and other usefull plugins.",
     "autoload": {
         "psr-0": { "": "src/" }
     },
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "~2.5@dev",
-        "doctrine/orm": "~2.2,>=2.2.3",
+        "symfony/symfony": "2.6.*",
+        "doctrine/orm": "~2.2,>=2.2.3,<2.5",
+        "doctrine/dbal": "<2.5",
         "doctrine/doctrine-bundle": "~1.2",
         "twig/extensions": "~1.0",
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
-        "sensio/distribution-bundle": "~2.3",
-        "sensio/framework-extra-bundle": "~3.0",
-        "sensio/generator-bundle": "~2.3",
+        "sensio/distribution-bundle": "~3.0,>=3.0.12",
+        "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/jsrouting-bundle": "@stable",
         "stof/doctrine-extensions-bundle": "@stable",
@@ -62,9 +62,6 @@
         "symfony-web-dir": "web",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
-        },
-        "branch-alias": {
-            "dev-master": "2.4-dev"
         }
     }
 }
