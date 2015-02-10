@@ -1,6 +1,7 @@
 # Symfony directories
 /web/bundles/
 /web/uploads/
+/web/static/
 /app/bootstrap.php.cache
 /app/cache/*
 /app/logs/*
