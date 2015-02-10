@@ -12,6 +12,8 @@ Includes css/js libraries:
 - Hogan.js v2.0.0
 - Bootstrap v3.1.1
 - Jasny Bootstrap v3.1.3
+- Bootstrap social
+- Font Awesome
 
 Includes Symfony 2 general bundles:
 
