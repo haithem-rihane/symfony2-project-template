@@ -1,19 +1,19 @@
 symfony2 project template
-=====
+=========================
 
 Ready to use Symfony 2.6 based template project, with latest common pre-configured bundles and jQuery, Bootstrap and other usefull plugins.
 
 Includes css/js libraries:
 
-- jQuery v1.11.0
-- jQuery-ui v1.10.4
-- typeahead.js v0.10.1
-- TinyMCE v4.0.21
-- Hogan.js v2.0.0
-- Bootstrap v3.1.1
-- Jasny Bootstrap v3.1.3
-- Bootstrap social
-- Font Awesome
+- jQuery ~2.1.3
+- jQuery-ui ~1.11.2
+- typeahead.js ~0.10.5
+- TinyMCE ~4.1.7
+- Hogan.js ~3.0.2
+- Bootstrap ~3.3.2
+- Jasny Bootstrap ~3.1.3
+- Bootstrap social ~4.8.0
+- Font Awesome ~4.2.0
 
 Includes Symfony 2 general bundles:
 
@@ -44,7 +44,7 @@ Includes Symfony 2 REST related bundles:
 - NelmioApiDocBundle
 
 Other important changes
-===
+=======================
 - profiler has been disabled
 - emails on dev environment will be spooled to disk
 - console, app.php, app_dev.php have enabled umask(0000) for simplified permissions workaround
@@ -52,7 +52,7 @@ Other important changes
 - by default, only two languages are added and fully translated: English and Lithuanian, but any language can be easily added by editing translation files and only topMenu
 
 Installation
-===
+============
 
 1. **Composer packages**
 
@@ -60,12 +60,16 @@ Installation
 
     You will be prompted to enter configuration values in parameters.yml, please refer to [parameters.yml.dist](/app/config/parameters.yml.dist) for more information.
 
-2. **Create database and schema**
+2. **JS/CSS packages**
+
+        bower install
+
+3. **Create database and schema**
 
         php app/console doctrine:database:create
         php app/console doctrine:schema:create
 
-3. **Add user to the system**
+4. **Add user to the system**
 
         php app/console fos:user:create
 
