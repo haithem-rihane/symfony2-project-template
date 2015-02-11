@@ -81,6 +81,7 @@
             <script src="{{ asset('static/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}" type="text/javascript"></script>
             <script src="{{ asset('static/tinymce/tinymce.min.js') }}" type="text/javascript"></script>
             <script src="{{ asset('static/tinymce/tinymce.jquery.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('static/hogan/web/builds/2.0.0/hogan-2.0.0.min.js') }}" type="text/javascript"></script>
         {% else %}
             <script src="{{ asset('static/jquery/dist/jquery.js') }}" type="text/javascript"></script>
             <script src="{{ asset('static/jquery-ui/jquery-ui.js') }}" type="text/javascript"></script>
@@ -89,9 +90,9 @@
             <script src="{{ asset('static/jasny-bootstrap/dist/js/jasny-bootstrap.js') }}" type="text/javascript"></script>
             <script src="{{ asset('static/tinymce/tinymce.js') }}" type="text/javascript"></script>
             <script src="{{ asset('static/tinymce/tinymce.jquery.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('static/hogan/web/builds/2.0.0/hogan-2.0.0.js') }}" type="text/javascript"></script>
         {% endif %}
 
-            <script src="{{ asset('js/hogan-2.0.0.js') }}" type="text/javascript"></script>
             <script src="{{ asset('bundles/bazingajstranslation/js/translator.min.js') }}"></script>
             <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}" type="text/javascript"></script>
             <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}" type="text/javascript"></script>
