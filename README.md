@@ -25,7 +25,7 @@ Includes Symfony 2 general bundles:
 - LiipImagineBundle
 - LiipFunctionalTestBundle
 - fzaninotto/Faker
-- Iphp\FileStoreBundle
+- IphpFileStoreBundle
 
 Includes Symfony 2 data view related bundles:
 
