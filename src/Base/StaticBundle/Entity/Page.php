@@ -7,7 +7,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use APY\DataGridBundle\Grid\Mapping as GRID;
 
 /**
- * Page
+ * Page.
  *
  * @ORM\Table(name="page")
  * @ORM\Entity(repositoryClass="Base\StaticBundle\Entity\PageRepository")
@@ -17,8 +17,7 @@ use APY\DataGridBundle\Grid\Mapping as GRID;
 class Page
 {
     /**
-     * @var integer
-     *
+     * @var int
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -33,6 +32,7 @@ class Page
     private $title;
 
     /**
+     * @var string
      * @Gedmo\Slug(fields={"title"}, updatable=true)
      * @ORM\Column(length=128, unique=true)
      */
@@ -53,7 +53,7 @@ class Page
     private $text;
 
     /**
-     * @var integer
+     * @var int
      * @Gedmo\Versioned
      * @ORM\Column(name="position", type="integer")
      */
@@ -68,8 +68,7 @@ class Page
     private $created;
 
     /**
-     * @var \DateTime $updated
-     *
+     * @var \DateTime
      * @ORM\Column(name="updated", type="datetime")
      * @Gedmo\Timestampable(on="update")
      */
@@ -83,8 +82,9 @@ class Page
     private $language;
 
     /**
-     * Get id
-     * @return integer
+     * Get id.
+     *
+     * @return int
      */
     public function getId()
     {
@@ -92,9 +92,10 @@ class Page
     }
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
+     *
      * @return Page
      */
     public function setTitle($title)
@@ -105,7 +106,7 @@ class Page
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -115,9 +116,10 @@ class Page
     }
 
     /**
-     * Set slug
+     * Set slug.
      *
      * @param string $slug
+     *
      * @return Page
      */
     public function setSlug($slug)
@@ -128,7 +130,7 @@ class Page
     }
 
     /**
-     * Get slug
+     * Get slug.
      *
      * @return string
      */
@@ -138,9 +140,10 @@ class Page
     }
 
     /**
-     * Set text
+     * Set text.
      *
      * @param string $text
+     *
      * @return Page
      */
     public function setText($text)
@@ -151,7 +154,7 @@ class Page
     }
 
     /**
-     * Get text
+     * Get text.
      *
      * @return string
      */
@@ -161,9 +164,10 @@ class Page
     }
 
     /**
-     * Set position
+     * Set position.
      *
-     * @param integer $position
+     * @param int $position
+     *
      * @return Page
      */
     public function setPosition($position)
@@ -174,9 +178,9 @@ class Page
     }
 
     /**
-     * Get position
+     * Get position.
      *
-     * @return integer
+     * @return int
      */
     public function getPosition()
     {
@@ -184,24 +188,31 @@ class Page
     }
 
     /**
+     * Sets group name.
+     *
      * @param string $groupName
      */
-    public function setGroupName($groupName) {
+    public function setGroupName($groupName)
+    {
         $this->groupName = $groupName;
     }
 
     /**
+     * Gets group name.
+     *
      * @return string
      */
-    public function getGroupName() {
+    public function getGroupName()
+    {
         return $this->groupName;
     }
 
     /**
-     * Set created
+     * Set created.
      *
      * @param \DateTime $created
-     * @return Author
+     *
+     * @return Page
      */
     public function setCreated($created)
     {
@@ -211,7 +222,7 @@ class Page
     }
 
     /**
-     * Get created
+     * Get created.
      *
      * @return \DateTime
      */
@@ -221,10 +232,11 @@ class Page
     }
 
     /**
-     * Set updated
+     * Set updated.
      *
      * @param \DateTime $updated
-     * @return Author
+     *
+     * @return Page
      */
     public function setUpdated($updated)
     {
@@ -234,7 +246,7 @@ class Page
     }
 
     /**
-     * Get updated
+     * Get updated.
      *
      * @return \DateTime
      */
@@ -244,17 +256,22 @@ class Page
     }
 
     /**
+     * Sets languge.
+     *
      * @param mixed $language
      */
-    public function setLanguage($language) {
+    public function setLanguage($language)
+    {
         $this->language = $language;
     }
 
     /**
+     * Gets language.
+     *
      * @return mixed
      */
-    public function getLanguage() {
+    public function getLanguage()
+    {
         return $this->language;
     }
-
 }

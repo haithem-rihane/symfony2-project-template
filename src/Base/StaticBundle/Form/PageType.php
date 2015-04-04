@@ -7,51 +7,85 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * Class PageType.
+ */
 class PageType extends AbstractType
 {
-        /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
+    /**
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, array('label' => 'form.title', 'translation_domain' => 'StaticBundle', 'attr' => array('class' => 'form-control', 'placeholder' => 'form.title'),))
-            ->add('groupName', 'choice',
-                array(
-                    'choices' => array(
+            ->add(
+                'title',
+                null,
+                [
+                    'label' => 'form.title',
+                    'translation_domain' => 'StaticBundle',
+                    'attr' => ['class' => 'form-control', 'placeholder' => 'form.title'],
+                ]
+            )
+            ->add(
+                'groupName',
+                'choice',
+                [
+                    'choices' => [
                         'help' => 'form.help',
                         'front_page' => 'form.front_page',
-                    ),
-                    'required' => false, 'label' => 'form.group', 'translation_domain' => 'StaticBundle',
-                    'attr' => array('class' => 'form-control', 'placeholder' => 'form.group'),
-                )
+                    ],
+                    'required' => false,
+                    'label' => 'form.group',
+                    'translation_domain' => 'StaticBundle',
+                    'attr' => ['class' => 'form-control', 'placeholder' => 'form.group'],
+                ]
             )
-            ->add('text', 'textarea', array('label' => 'form.text', 'required' => false, 'attr' => array('class' => 'tinymce_textarea form-control')))
-            ->add('position', 'integer', array('label' => 'form.position', 'translation_domain' => 'StaticBundle', 'attr' => array('class' => 'form-control', 'placeholder' => 'form.position'),))
-            ->add('language', 'choice',
-                array(
-                    'choices' => array('lt' => 'form.lt_LT', 'en' => 'form.en_US'),
-                    'label' => 'form.language', 'translation_domain' => 'StaticBundle',
-                    'attr' => array('class' => 'form-control', 'placeholder' => 'form.position'),
-                )
+            ->add(
+                'text',
+                'textarea',
+                [
+                    'label' => 'form.text',
+                    'required' => false,
+                    'attr' => ['class' => 'tinymce_textarea form-control'],
+                ]
             )
-        ;
+            ->add(
+                'position',
+                'integer',
+                [
+                    'label' => 'form.position',
+                    'translation_domain' => 'StaticBundle',
+                    'attr' => ['class' => 'form-control', 'placeholder' => 'form.position'],
+                ]
+            )
+            ->add(
+                'language',
+                'choice',
+                [
+                    'choices' => ['lt' => 'form.lt_LT', 'en' => 'form.en_US'],
+                    'label' => 'form.language',
+                    'translation_domain' => 'StaticBundle',
+                    'attr' => ['class' => 'form-control', 'placeholder' => 'form.position'],
+                ]
+            );
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * {@inheritdoc}
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'Base\StaticBundle\Entity\Page',
-            'translation_domain' => 'StaticBundle'
-        ));
+        $resolver->setDefaults(
+            [
+                'data_class' => 'Base\StaticBundle\Entity\Page',
+                'translation_domain' => 'StaticBundle',
+            ]
+        );
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getName()
     {
