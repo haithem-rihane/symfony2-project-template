@@ -1,6 +1,8 @@
 symfony2 project template
 =========================
 
+[![Build Status](https://travis-ci.org/trylika/symfony2-project-template.svg)](https://travis-ci.org/trylika/symfony2-project-template)
+
 Ready to use Symfony 2.6 based template project, with latest common pre-configured bundles and jQuery, Bootstrap and other usefull plugins.
 
 Includes css/js libraries:
@@ -45,6 +47,7 @@ Includes Symfony 2 REST related bundles:
 
 Other important changes
 =======================
+- ongr-io/ongr-strict-standard has been used to verify code quality
 - profiler has been disabled
 - emails on dev environment will be spooled to disk
 - console, app.php, app_dev.php have enabled umask(0000) for simplified permissions workaround

@@ -1,10 +1,10 @@
 language: php
-
 php:
-  - 5.3.3
-  - 5.3
   - 5.4
-
-before_script: composer install -n
-
-script: phpunit -c app
+env:
+  - SYMFONY="2.6.*"
+before_script:
+  - composer update --prefer-dist
+script:
+#  - bin/phpunit
+  - bin/phpcs -p --standard=$TRAVIS_BUILD_DIR/vendor/ongr/ongr-strict-standard/ONGR --ignore=vendor/,Tests/app/,Resources/public/ ./src
