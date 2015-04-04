@@ -8,10 +8,17 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
 
+/**
+ * Class ProfileController.
+ */
 class ProfileController extends BaseController
 {
     /**
-     * Edit the user
+     * Edit the user.
+     *
+     * @throws AccessDeniedException
+     *
+     * @return mixed
      */
     public function editAction()
     {
@@ -31,17 +38,16 @@ class ProfileController extends BaseController
         }
 
         return $this->container->get('templating')->renderResponse(
-            'FOSUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
-            array('form' => $form->createView())
+            'FOSUserBundle:Profile:edit.html.' . $this->container->getParameter('fos_user.template.engine'),
+            ['form' => $form->createView()]
         );
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function getRedirectionUrl(UserInterface $user)
     {
         return $this->container->get('router')->generate('fos_user_profile_edit');
     }
-
 }

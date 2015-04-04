@@ -4,9 +4,16 @@ namespace Base\UserBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * Class BaseUserBundle.
+ */
 class BaseUserBundle extends Bundle
 {
-    public function getParent(){
+    /**
+     * {@inheritdoc}
+     */
+    public function getParent()
+    {
         return 'FOSUserBundle';
     }
 }

@@ -12,6 +12,7 @@ use Base\UserBundle\Form\UserType;
 use APY\DataGridBundle\Grid\Source\Entity;
 use APY\DataGridBundle\Grid\Action\RowAction;
 use APY\DataGridBundle\Grid\Column\ActionsColumn;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * User controller.
@@ -20,11 +21,12 @@ use APY\DataGridBundle\Grid\Column\ActionsColumn;
  */
 class UserController extends Controller
 {
-
     /**
      * Lists all User entities.
      *
      * @Route(".html", name="users")
+     *
+     * @return mixed
      */
     public function indexAction()
     {
@@ -36,64 +38,68 @@ class UserController extends Controller
         $grid->setSource($source);
         $grid->setNoResultMessage($this->get('translator')->trans('No data'));
 
-        //custom colums config
+        // Custom colums config.
         $grid->hideColumns('id');
 
         /* @var $column \APY\DataGridBundle\Grid\Column\Column */
         $column = $grid->getColumn('name');
-        $column->setOperators(array('like'));
+        $column->setOperators(['like']);
         $column->setOperatorsVisible(false);
         $column->setDefaultOperator('like');
-        $column->setTitle($this->get('translator')->trans('form.name', array(), 'FOSUserBundle'));
+        $column->setTitle($this->get('translator')->trans('form.name', [], 'FOSUserBundle'));
 
         $column = $grid->getColumn('surname');
-        $column->setOperators(array('like'));
+        $column->setOperators(['like']);
         $column->setOperatorsVisible(false);
         $column->setDefaultOperator('like');
-        $column->setTitle($this->get('translator')->trans('form.surname', array(), 'FOSUserBundle'));
+        $column->setTitle($this->get('translator')->trans('form.surname', [], 'FOSUserBundle'));
 
         $column = $grid->getColumn('username');
-        $column->setOperators(array('like'));
+        $column->setOperators(['like']);
         $column->setOperatorsVisible(false);
         $column->setDefaultOperator('like');
-        $column->setTitle($this->get('translator')->trans('form.username', array(), 'FOSUserBundle'));
+        $column->setTitle($this->get('translator')->trans('form.username', [], 'FOSUserBundle'));
 
         $column = $grid->getColumn('email');
-        $column->setOperators(array('like'));
+        $column->setOperators(['like']);
         $column->setOperatorsVisible(false);
         $column->setDefaultOperator('like');
-        $column->setTitle($this->get('translator')->trans('form.email', array(), 'FOSUserBundle'));
+        $column->setTitle($this->get('translator')->trans('form.email', [], 'FOSUserBundle'));
 
         $column = $grid->getColumn('roles');
         $column->setFilterType('select');
-        $column->setOperators(array('like'));
+        $column->setOperators(['like']);
         $column->setOperatorsVisible(false);
         $column->setDefaultOperator('like');
         $column->setSelectFrom('values');
-        $column->setTitle($this->get('translator')->trans('form.role', array(), 'FOSUserBundle'));
+        $column->setTitle($this->get('translator')->trans('form.role', [], 'FOSUserBundle'));
         $column->setSize(200);
         $column->setValues(
-            array(
-                'ROLE_ADMIN' => $this->get('translator')->trans('admin.role_admin', array(), 'FOSUserBundle'),
-//                'ROLE_USER' => $this->get('translator')->trans('admin.role_user', array(), 'FOSUserBundle'),
-            )
+            [
+                'ROLE_ADMIN' => $this->get('translator')->trans('admin.role_admin', [], 'FOSUserBundle'),
+            ]
         );
 
         $column = $grid->getColumn('locked');
         $column->setFilterType('select');
         $column->setSelectFrom('values');
-        $column->setTitle($this->get('translator')->trans('form.locked', array(), 'FOSUserBundle'));
+        $column->setTitle($this->get('translator')->trans('form.locked', [], 'FOSUserBundle'));
         $column->setSize(110);
         $column->setValues(
-            array(
-                true => $this->get('translator')->trans('positive', array(), 'general'),
-                false => $this->get('translator')->trans('negative', array(), 'general'),
-            )
+            [
+                true => $this->get('translator')->trans('positive', [], 'general'),
+                false => $this->get('translator')->trans('negative', [], 'general'),
+            ]
         );
 
-        //add actions column
+        // Add actions column.
         $rowAction = new RowAction($this->get('translator')->trans('Edit'), 'user_edit');
-        $actionsColumn = new ActionsColumn('info_column', $this->get('translator')->trans('Actions'), array($rowAction), "<br/>");
+        $actionsColumn = new ActionsColumn(
+            'info_column',
+            $this->get('translator')->trans('Actions'),
+            [$rowAction],
+            '<br/>'
+        );
         $actionsColumn->setSize(110);
         $grid->addColumn($actionsColumn);
 
@@ -103,9 +109,15 @@ class UserController extends Controller
     /**
      * Displays a form to edit an existing User entity.
      *
+     * @param int $id
+     *
      * @Route("/{id}/edit.html", name="user_edit")
      * @Method("GET")
      * @Template()
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return mixed
      */
     public function editAction($id)
     {
@@ -119,27 +131,31 @@ class UserController extends Controller
 
         $editForm = $this->createEditForm($entity);
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-        );
+        return [
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+        ];
     }
 
     /**
-    * Creates a form to edit a User entity.
-    *
-    * @param User $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a User entity.
+     *
+     * @param User $entity The entity.
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(User $entity)
     {
-        $form = $this->createForm(new UserType(), $entity, array(
-            'action' => $this->generateUrl('user_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+        $form = $this->createForm(
+            new UserType(),
+            $entity,
+            [
+                'action' => $this->generateUrl('user_update', ['id' => $entity->getId()]),
+                'method' => 'PUT',
+            ]
+        );
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', ['label' => 'Update']);
 
         return $form;
     }
@@ -147,9 +163,16 @@ class UserController extends Controller
     /**
      * Edits an existing User entity.
      *
+     * @param Request $request
+     * @param int     $id
+     *
      * @Route("/{id}", name="user_update")
      * @Method("PUT")
      * @Template("BaseUserBundle:User:edit.html.twig")
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function updateAction(Request $request, $id)
     {
@@ -169,12 +192,12 @@ class UserController extends Controller
 
             $this->container->get('session')->getFlashBag()->set('notice', 'profile.flash.updated');
 
-            return $this->redirect($this->generateUrl('user_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('user_edit', ['id' => $id]));
         }
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-        );
+        return [
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+        ];
     }
 }

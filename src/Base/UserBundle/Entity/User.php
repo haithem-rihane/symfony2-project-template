@@ -8,7 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use APY\DataGridBundle\Grid\Mapping as GRID;
 
 /**
- * User
+ * User entity.
  *
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Base\UserBundle\Entity\UserRepository")
@@ -18,8 +18,7 @@ use APY\DataGridBundle\Grid\Mapping as GRID;
 class User extends BaseUser
 {
     /**
-     * @var integer
-     *
+     * @var int
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -48,19 +47,19 @@ class User extends BaseUser
     protected $surname = null;
 
     /**
-     * Set registeredAt
+     * Set registeredAt.
      *
      * @return User
      */
     public function setRegisteredAt()
     {
-        $this->registeredAt = new \DateTime("now");
+        $this->registeredAt = new \DateTime('now');
 
         return $this;
     }
 
     /**
-     * Get registeredAt
+     * Get registeredAt.
      *
      * @return \DateTime
      */
@@ -70,9 +69,10 @@ class User extends BaseUser
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
+     *
      * @return User
      */
     public function setName($name)
@@ -83,7 +83,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -93,9 +93,10 @@ class User extends BaseUser
     }
 
     /**
-     * Set surname
+     * Set surname.
      *
      * @param string $surname
+     *
      * @return User
      */
     public function setSurname($surname)
@@ -106,7 +107,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get surname
+     * Get surname.
      *
      * @return string
      */
@@ -115,46 +116,57 @@ class User extends BaseUser
         return $this->surname;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function __construct()
     {
         parent::__construct();
 
-        $this->registeredAt = new \DateTime("now");
+        $this->registeredAt = new \DateTime('now');
     }
 
-    public function setEmail($email){
+    /**
+     * {@inheritdoc}
+     */
+    public function setEmail($email)
+    {
         $this->email = $email;
     }
 
-    public function setUsername($name){
+    /**
+     * {@inheritdoc}
+     */
+    public function setUsername($name)
+    {
         $this->username = $name;
     }
 
     /**
-     * Get Name and Surname
+     * Get Name and Surname.
      *
      * @return string
      */
     public function getNameSurname()
     {
-        return trim($this->getName() . ' ' . $this->getSurname());;
+        return trim($this->getName() . ' ' . $this->getSurname());
     }
 
     /**
-     * Get Surname and Name
+     * Get Surname and Name.
      *
      * @return string
      */
     public function getSurnameName()
     {
-        return trim($this->getSurname() . ' ' . $this->getName());;
+        return trim($this->getSurname() . ' ' . $this->getName());
     }
 
-
     /**
-     * Set user name and surname from string
+     * Set user name and surname from string.
      *
-     * @param $nameSurname
+     * @param string $nameSurname
+     *
      * @return User
      */
     public function setNameSurname($nameSurname)
@@ -164,9 +176,8 @@ class User extends BaseUser
 
         if ($pos !== false) {
             $this->setName(mb_substr($nameSurname, 0, $pos));
-            $this->setSurname(mb_substr($nameSurname, $pos+1));
-        }
-        else {
+            $this->setSurname(mb_substr($nameSurname, $pos + 1));
+        } else {
             $this->setName($nameSurname);
             $this->setSurname('');
         }
@@ -174,8 +185,17 @@ class User extends BaseUser
         return $this;
     }
 
-    public function getPublicName(){
-        if ($this->getNameSurname()) return $this->getNameSurname();
-            else return $this->getUsername();
+    /**
+     * Get public name string.
+     *
+     * @return string
+     */
+    public function getPublicName()
+    {
+        if ($this->getNameSurname()) {
+            return $this->getNameSurname();
+        } else {
+            return $this->getUsername();
+        }
     }
 }
